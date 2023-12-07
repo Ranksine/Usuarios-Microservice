@@ -28,14 +28,7 @@ public class UsuariosRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario usuario, @PathVariable long id){
-        Optional <Usuario> usuarioIndb = usuariosRepository.findById(id);
-
-        if(usuarioIndb.isEmpty())
-            return ResponseEntity.badRequest().build();
-
-        usuario.setIdUsuario(usuarioIndb.get().getIdUsuario());
-
+    public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario usuario){
         boolean isOk = true;
         if (usuario == null)
             return ResponseEntity.badRequest().build();
